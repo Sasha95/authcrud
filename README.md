@@ -1,9 +1,8 @@
 dotnet run
 
-
+```javascript
 POST
 http://localhost:4000/users/register
-
 {
     "firstName": "Jason",
     "lastName": "Watmore",

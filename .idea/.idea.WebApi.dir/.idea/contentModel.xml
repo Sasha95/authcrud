@@ -20,7 +20,6 @@
         <e p="AutoMapperProfile.cs" t="Include" />
         <e p="DataContext.cs" t="Include" />
       </e>
-      <e p="LICENSE" t="Include" />
       <e p="Models" t="Include">
         <e p="Users" t="Include">
           <e p="AuthenticateModel.cs" t="Include" />
