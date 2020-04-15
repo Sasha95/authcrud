@@ -11,6 +11,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using System;
+using Microsoft.OpenApi.Models;
 
 namespace WebApi
 {
@@ -70,6 +71,10 @@ namespace WebApi
                     ValidateAudience = false
                 };
             });
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
+            });
 
             // configure DI for application services
             services.AddScoped<IUserService, UserService>();
@@ -79,7 +84,11 @@ namespace WebApi
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             app.UseRouting();
-
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+            });
             // global cors policy
             app.UseCors(x => x
                 .AllowAnyOrigin()
